@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="start">
+  Sistema de Biblioteca
+</h1>
+
+
+## Tecnologias utilizadas
+
+- **[Next.js](https://nextjs.org/):** Framework React para SSR, rotas dinâmicas e otimização de desempenho.
+- **[TailwindCSS](https://tailwindcss.com/):** CSS utilitário para estilização rápida e responsiva.
+- **[Shadcn UI](https://ui.shadcn.dev/):** Conjunto de componentes acessíveis e personalizáveis.
 
 ## Getting Started
 
