@@ -1,8 +1,8 @@
 "use client";
 
-import { SectionCards } from "@/components/section-cards";
-import { RankingCards } from "@/components/ranking-cards";
-import { TabelaLivrosAtraso } from "@/components/data-table";
+import { SectionCards } from "@/components/dashboard/section-cards";
+import { RankingCards } from "@/components/dashboard/ranking-cards";
+import { TabelaLivrosAtraso } from "@/components/dashboard/data-table";
 import { useEffect, useState } from "react";
 import {
   RelatorioLivrosAtraso,
@@ -12,7 +12,7 @@ import {
 } from "@/types";
 import { relatorioService } from "@/services/api";
 
-export default function Home() {
+export default function DataTableLivros() {
   const [livrosMaisEmprestados, setLivrosMaisEmprestados] = useState<
     RelatorioLivrosMaisEmprestados[]
   >([]);

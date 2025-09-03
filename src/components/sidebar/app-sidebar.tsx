@@ -1,13 +1,6 @@
 "use client";
 
 import * as React from "react";
-import {
-  IconChartBar,
-  IconDashboard,
-  IconFolder,
-  IconListDetails,
-  IconUsers,
-} from "@tabler/icons-react";
 import { NavMain } from "@/components/sidebar/nav-main";
 import {
   Sidebar,
@@ -18,37 +11,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { data } from "@/lib/data-nav";
 import { Book } from "lucide-react";
-
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/",
-      icon: IconDashboard,
-    },
-    {
-      title: "Livros",
-      url: "/livros",
-      icon: IconListDetails,
-    },
-    {
-      title: "Membros",
-      url: "/membros",
-      icon: IconChartBar,
-    },
-    {
-      title: "Empréstimos",
-      url: "/emprestimos",
-      icon: IconFolder,
-    },
-    {
-      title: "Relatórios",
-      url: "/relatorios",
-      icon: IconUsers,
-    },
-  ],
-};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (

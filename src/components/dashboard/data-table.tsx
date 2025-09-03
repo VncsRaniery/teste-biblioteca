@@ -19,7 +19,7 @@ interface LivrosAtrasoTabelaProps {
 
 export function TabelaLivrosAtraso({ livrosAtraso }: LivrosAtrasoTabelaProps) {
   return (
-    <div className="grid grid-cols-1 gap-4 px-4lg:gap-6 lg:px-6">
+    <div className="grid grid-cols-1 gap-4 px-4 lg:gap-6 lg:px-6">
       <Card className="border-red-200 dark:border-red-900/40">
         <CardHeader>
           <div className="flex items-center space-x-2">

@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/breadcrumb";
 import { HomeIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { navMain } from "@/lib/data-nav";
+import { data } from "@/lib/data-nav";
 
 export function SiteHeader() {
   const pathname = usePathname(); // 2. Obter a rota atual
 
   // 3. Encontrar o item de navegação que corresponde à rota atual
-  const activeItem = navMain.find((item) => item.url === pathname);
+  const activeItem = data.navMain.find((item) => item.url === pathname);
 
   return (
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
