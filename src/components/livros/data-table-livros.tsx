@@ -19,13 +19,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -130,99 +124,104 @@ export default function DataTableLivros() {
 
   return (
     <div className="grid grid-cols-1 gap-4 px-4lg:gap-6 lg:px-6">
-      <Card>
-        <CardHeader>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <CardTitle>Acervo de Livros</CardTitle>
-              <CardDescription>
-                Gerencie, adicione e visualize os livros da biblioteca.
-              </CardDescription>
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold tracking-tight">
+            Acervo de Livros
+          </h1>
+          <p className="text-muted-foreground">
+            Gerencie, adicione e visualize os livros da biblioteca.
+          </p>
+        </div>
+        <Card>
+          <CardHeader>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="relative w-full md:w-auto">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Buscar por título, ISBN ou editora..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-8 w-full md:w-80"
+                />
+              </div>
+              <Button>
+                <PlusCircle className="h-4 w-4 mr-2" />
+                Novo Livro
+              </Button>
             </div>
-            <Button>
-              <PlusCircle className="h-4 w-4 mr-2" />
-              Novo Livro
-            </Button>
-          </div>
-          <div className="relative mt-4">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Buscar por título, ISBN ou editora..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-8 w-full md:w-1/3"
-            />
-          </div>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Título</TableHead>
-                <TableHead className="hidden md:table-cell">ISBN</TableHead>
-                <TableHead>Editora</TableHead>
-                <TableHead className="hidden sm:table-cell">Ano</TableHead>
-                <TableHead className="text-right">Ações</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredLivros.length > 0 ? (
-                filteredLivros.map((livro) => (
-                  <TableRow key={livro.livroID}>
-                    <TableCell>
-                      <div className="font-medium">{livro.titulo}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {livro.edicao}
-                      </div>
-                    </TableCell>
-                    <TableCell className="hidden md:table-cell font-mono text-sm">
-                      {livro.isbn}
-                    </TableCell>
-                    <TableCell>{livro.editora?.nome}</TableCell>
-                    <TableCell className="hidden sm:table-cell">
-                      {livro.anoPublicacao}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>
-                            <Eye className="mr-2 h-4 w-4" /> Visualizar
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Edit className="mr-2 h-4 w-4" /> Editar
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem className="text-red-600">
-                            <Trash2 className="mr-2 h-4 w-4" /> Excluir
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Título</TableHead>
+                  <TableHead className="hidden md:table-cell">ISBN</TableHead>
+                  <TableHead>Editora</TableHead>
+                  <TableHead className="hidden sm:table-cell">Ano</TableHead>
+                  <TableHead className="text-right">Ações</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {filteredLivros.length > 0 ? (
+                  filteredLivros.map((livro) => (
+                    <TableRow key={livro.livroID}>
+                      <TableCell>
+                        <div className="font-medium">{livro.titulo}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {livro.edicao}
+                        </div>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell font-mono text-sm">
+                        {livro.isbn}
+                      </TableCell>
+                      <TableCell>{livro.editora?.nome}</TableCell>
+                      <TableCell className="hidden sm:table-cell">
+                        {livro.anoPublicacao}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Ações</DropdownMenuLabel>
+                            <DropdownMenuItem>
+                              <Eye className="mr-2 h-4 w-4" /> Visualizar
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Edit className="mr-2 h-4 w-4" /> Editar
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem className="text-red-600">
+                              <Trash2 className="mr-2 h-4 w-4" /> Excluir
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={5} className="h-24 text-center">
+                      Nenhum livro encontrado.
                     </TableCell>
                   </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell colSpan={5} className="h-24 text-center">
-                    Nenhum livro encontrado.
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+                )}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
